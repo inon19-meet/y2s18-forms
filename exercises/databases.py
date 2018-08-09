@@ -60,3 +60,15 @@ def query_by_id(student_id):
     student = session.query(Student).filter_by(
         student_id=student_id).first()
     return student
+
+def add_student_info(person_name,person_year):
+	vote_object = Vote(name=person_name, year=person_year)
+	session.add(vote_object)
+	session.commit()
+
+def get_all_student_info():
+	all_info = session.query(Vote).all()
+	return all_info
+
+
+	pass

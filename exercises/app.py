@@ -14,5 +14,24 @@ def display_student(student_id):
 def add():
 	return render_template('add.html', add_student_route())
 
+@app.route('/vote', methods=['GET', 'POST'])
+def vote():
+	if request.method == 'GET':
+		return render_template('from.html')
+	else:
+		firstname = request.form['firstname']
+		theyear = request.form['theyear']
+
+		add_studenr_info(firstname, theyear)
+
+		return render_template('response.html',
+		n=firstname,
+		s=theyear)
+
+@app.route('/students')
+def all_students():
+	all_info = get_all_survey_info()
+	return render_template('all.html', all_students=all_info)
+
 
 app.run(debug=True)

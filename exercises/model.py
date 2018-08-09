@@ -33,3 +33,12 @@ class Student(Base):
 					self.finished_lab)
 
 
+class Vote(Base):
+	__tablename__ = 'votes'
+	vote_id = Column(Integer, primary_key = True)
+	name = Column(String)
+	year = Column(Integer)
+
+	def __repr__(self):
+		return "{} likes {}.\n".format(self.name, self.year)
+		
